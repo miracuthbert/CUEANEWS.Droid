@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/news"
+            android:title="News" />
+    </group>
+
+    <item android:title="@string/share">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/tell_a_friend" />
+
+        </menu>
+    </item>
+
+    <item android:title="@string/connect_with_us">
+        <menu>
+
+            <item
+                android:id="@+id/nav_web"
+                android:icon="@drawable/web"
+                android:title="www.cuea.edu" />
+
+            <item
+                android:id="@+id/nav_fb"
+                android:icon="@drawable/fb"
+                android:title="Facebook" />
+
+            <item
+                android:id="@+id/nav_twitter"
+                android:icon="@drawable/twitter"
+                android:title="Twitter" />
+
+        </menu>
+    </item>
+
+    <item android:title="@string/extras">
+        <menu>
+
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/info"
+                android:title="About" />
+
+            <item
+                android:id="@+id/nav_faqs"
+                android:icon="@android:drawable/ic_menu_help"
+                android:title="Help"/>
+        </menu>
+
+    </item>
+
+</menu>
