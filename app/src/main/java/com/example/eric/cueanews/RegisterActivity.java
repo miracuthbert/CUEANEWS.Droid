@@ -37,6 +37,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static android.Manifest.permission.READ_CONTACTS;
 import static com.example.eric.cueanews.LoginActivity.LOGIN_NAME;
@@ -93,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mConfirmPasswordView = (EditText) findViewById(R.id.confirm_password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mConfirmPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -210,7 +211,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             focusView = mPasswordView;
             cancel = true;
         }
-        if(!doPasswordsMatch(password, confirm_password)) {
+        if (!doPasswordsMatch(password, confirm_password)) {
             mConfirmPasswordView.setError(getString(R.string.error_password_match));
             focusView = mConfirmPasswordView;
             cancel = true;
@@ -290,7 +291,12 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
     private boolean doPasswordsMatch(String password, String confirmPassword) {
         //TODO: Replace this with your own logic
-        return ((password.length() == confirmPassword.length()) && (password == confirmPassword));
+        boolean isMatch;
+        isMatch = (password.equals(confirmPassword));
+
+        Log.d(TAG, "doPasswordsMatch: returned" + isMatch);
+
+        return isMatch;
     }
 
     private boolean isPasswordValid(String password) {

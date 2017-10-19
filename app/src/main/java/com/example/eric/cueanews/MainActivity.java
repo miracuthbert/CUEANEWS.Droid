@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity
 
         Log.d(TAG, "onCreate: ends");
     }
+
     /**
      * Shows the progress UI and hides the login form.
      */
@@ -190,13 +191,11 @@ public class MainActivity extends AppCompatActivity
         String storedEmail = preferences.getString("email", null);
         String storedToken = preferences.getString("access_token", null);
 
-        if ((storedName != null) && (storedUsername != null) &&
-                (storedAvatar != null) && (storedEmail != null) && (storedToken != null)) {
+        if ((storedName != null) && (storedUsername != null) && (storedToken != null)) {
             mUserFullname.setText(storedName + " (" + storedUsername + ")");
-
-        } else {
-            fetchUserDetails(storedToken);
         }
+
+        fetchUserDetails(storedToken);
 
         if (mUserEmail != null) {
             mUserEmail.setText(storedEmail);
@@ -253,8 +252,7 @@ public class MainActivity extends AppCompatActivity
         editor.putString("updated_at", updated_at);
         editor.commit();
 
-        if ((name != null) && (username != null)) {
-            mUserFullname.setText(name + " (" + username + ")");
+        mUserFullname.setText(name + " (" + username + ")");
 
 //            //set post thumbnail
 //            Picasso.with(this).load(avatar)
@@ -262,7 +260,6 @@ public class MainActivity extends AppCompatActivity
 //                    .placeholder(R.drawable.avatar)
 //                    .into(mUserAvatar);
 
-        }
     }
 
     void fetchUserDetails(String accessToken) {
@@ -397,7 +394,7 @@ public class MainActivity extends AppCompatActivity
             // Handle the about action
             // Intent code for open new activity through intent.
             startActivity(new Intent(getApplicationContext(), AboutActivity.class));
-        }else if (id == R.id.nav_faqs) {
+        } else if (id == R.id.nav_faqs) {
             // Handle the about action
             // Intent code for open new activity through intent.
             startActivity(new Intent(getApplicationContext(), FaqActivity.class));
@@ -434,8 +431,7 @@ public class MainActivity extends AppCompatActivity
                         Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
-        }else if (id == R.id.nav_twitter)
-        {
+        } else if (id == R.id.nav_twitter) {
             // Handle the twitter action
             Intent twitt = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.twitter.com"));
             startActivity(twitt);
